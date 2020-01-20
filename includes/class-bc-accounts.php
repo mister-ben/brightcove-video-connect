@@ -489,13 +489,13 @@ class BC_Accounts {
 			}
 		}
 
-		$playlist = $cms_api->playlist_add( __( 'Brightcove WordPress plugin test playlist', 'brightcove' ) );
+		$playlist = $cms_api->playlist_add( __( 'Brightcove WordPress plugin test playlist', 'brightcove' ), 'EXPLICIT' );
 		if ( ! $playlist || ! is_array( $playlist ) || ! isset( $playlist['id'] ) ) {
 			$permission_issues[] = esc_html__( 'create playlists', 'brightcove' );
 		} else {
 			// For use through other Playlist test API calls.
 			$playlist_id = $playlist['id'];
-			$update_data = array( 'video_ids' => array( $video_id ), 'type' => 'EXPLICIT' );
+			$update_data = array( 'video_ids' => array( $video_id ) );
 
 			$updated_playlist = $cms_api->playlist_update( $playlist_id, $update_data );
 
